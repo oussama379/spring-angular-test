@@ -16,6 +16,17 @@ import java.util.List;
 @CrossOrigin("*")
 public class OrderController {
 
+    private OrderService orderService;
+
+    public OrderController(OrderService orderService) {
+        this.orderService = orderService;
+    }
+
+    @GetMapping("order")
+    public List<OrderDto> getAllOrders(){
+        return orderService.fetchAllOrders();
+    }
+
 
 
 }
