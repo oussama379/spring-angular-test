@@ -32,5 +32,15 @@ public class OrderController {
         return orderService.createOrder(orderDto);
     }
 
+    @PutMapping("order/{id}")
+    public ResponseEntity editOrder(@PathVariable Long id, @RequestBody OrderDto orderDto){
+        OrderDto order = orderService.editOrder(id, orderDto);
+        if(order != null)
+            return new ResponseEntity<>(orderDto, HttpStatus.OK);
+        else {
+            return new ResponseEntity<>("Order Not Found", HttpStatus.BAD_REQUEST);
+        }
+    }
+
 
 }
