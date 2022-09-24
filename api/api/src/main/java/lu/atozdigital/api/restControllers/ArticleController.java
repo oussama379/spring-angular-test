@@ -36,5 +36,8 @@ public class ArticleController {
         }
     }
 
-
+    @GetMapping("article")
+    public List<ArticleDto> getAllArticles(){
+        return articleService.fetchAllArticles();
+    }
 }
