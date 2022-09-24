@@ -27,6 +27,10 @@ public class OrderController {
         return orderService.fetchAllOrders();
     }
 
+    @PostMapping("/order")
+    public OrderDto createOrder(@RequestBody OrderDto orderDto) throws IOException {
+        return orderService.createOrder(orderDto);
+    }
 
 
 }
