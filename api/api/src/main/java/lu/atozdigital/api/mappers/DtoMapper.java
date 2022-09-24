@@ -2,7 +2,6 @@ package lu.atozdigital.api.mappers;
 
 import lu.atozdigital.api.dtos.ArticleDto;
 import lu.atozdigital.api.dtos.OrderDto;
-import lu.atozdigital.api.dtos.UserDto;
 import lu.atozdigital.api.models.Article;
 import lu.atozdigital.api.models.Order;
 

@@ -1,0 +1,45 @@
+<div class="container mt-5 mb-2">
+  <nav>
+    <form [formGroup]="searchFormGroup" (ngSubmit)="handleSearchById()">
+      <input type="number" style="width: 70%; display: inline" class="form-control m-lg-2" placeholder="search by ID" formControlName="id">
+      <button class="btn btn-outline-success m-lg-2" type="submit">Search</button>
+      <button class="btn btn-outline-danger m-lg-2" *ngIf="isSearch" (click)="handleGetArticles()">Cancel Search</button>
+      <button class="btn btn-outline-info" routerLink="/addArticle">Add Article</button>
+      <small class="text-danger" *ngIf="searchError">
+        {{searchError}}
+      </small>
+    </form>
+    <ul>
+      <button class="btn btn-outline-success m-lg-2" *ngIf="newOrder" (click)="handleSaveOrder()">Save Order</button>
+      <button class="btn btn-outline-danger" *ngIf="newOrder" (click)="handleCancelOrder()">Cancel Order</button>
+    </ul>
+    <ul>
+      <button class="btn btn-outline-success m-lg-2" *ngIf="isEditOrder" (click)="handleEditOrder()">Edit Order</button>
+      <button class="btn btn-outline-danger" *ngIf="isEditOrder" (click)="handleCancelEditOrder()">Cancel Edit Order</button>
+    </ul>
+  </nav>
+</div>
+
+<div class="container d-flex justify-content-center  mb-5">
+  <div class="row">
+    <div class="col-md-4 mt-2" *ngFor="let article of articles">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-img-actions">
+            <img src="data:image/png;base64,{{article.picture}}" class="card-img img-fluid" width="80" height="300" >
+          </div>
+        </div>
+        <div class="card-body text-center bg-light">
+          <div class="mb-2">
+            <h5>
+              <a>{{article.name}}</a>
+            </h5>
+          </div>
+          <h5>{{article.price}} DH</h5>
+          <button type="button" class="btn btn-outline-success" *ngIf="!isInOrder(article)" (click)="handleAddToOrder(article)"><i class="fa fa-cart-plus mr-2"></i> Add to order</button>
+          <button type="button" class="btn btn-outline-danger" *ngIf="isInOrder(article)" (click)="handleRemoveFromOrder(article)"><i class="fa fa-cart-plus mr-2"></i> Remove from order</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="container mt-5 mb-5">
+ <div class="card" >
+  <div class="card-header">Orders</div>
+  <div class="card-body">
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Reference</th>
+        <th>Date</th>
+        <th>Edit</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let o of orders">
+        <td>{{o.reference}}</td>
+        <td>{{o.date}}</td>
+        <td>
+          <button class="btn btn-outline-info" (click)="handleEditOrder(o)">
+            <a>Edit <i class="bi bi-pen"></i></a>
+          </button>
+        </td>
+        <td>
+          <div class="dropdown">
+            <button class="dropbtn">articles IDs</button>
+            <div class="dropdown-content" >
+              <a *ngFor="let article of o.articles">{{article.id}}</a>
+            </div>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+

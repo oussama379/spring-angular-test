@@ -1,0 +1,31 @@
+<div class="container mt-3 col-md-4 ">
+  <div class="card">
+     <div class="card-header text-center"><strong>Add Article</strong></div>
+    <div class="card-body">
+  <form [formGroup]="articleFormGroup" (ngSubmit)="handleAddArticle()">
+    <div class="mb-3">
+      <label class="form-label">Article name</label>
+      <input type="text" formControlName="name" class="form-control">
+      <small class="text-danger" *ngIf="articleFormGroup.controls['name'].errors && articleFormGroup.controls['name'].touched">
+        {{getErrorMessage('Article name', articleFormGroup.controls['name'].errors)}}
+      </small>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Price</label>
+      <input type="number" formControlName="price" class="form-control">
+      <small class="text-danger" *ngIf="articleFormGroup.controls['price'].errors && articleFormGroup.controls['price'].touched">
+        {{getErrorMessage('Price', articleFormGroup.controls['price'].errors)}}
+      </small>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Image</label>
+      <input type="file" accept="picture/*" class="form-control" (change)="onImageSelected($event)" formControlName="picture">
+      <small class="text-danger" *ngIf="articleFormGroup.controls['picture'].errors && articleFormGroup.controls['picture'].touched">
+        {{getErrorMessage('Picture', articleFormGroup.controls['picture'].errors)}}
+      </small>
+    </div>
+    <button [disabled]="!articleFormGroup.valid" class="btn btn-outline-info">Save</button>
+  </form>
+    </div>
+  </div>
+</div>
