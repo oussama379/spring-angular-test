@@ -26,4 +26,15 @@ public class ArticleController {
         return articleService.createArticle(articleDto);
     }
 
+    @GetMapping("article/{id}")
+    public ResponseEntity getArticleById(@PathVariable Long id){
+        ArticleDto articleDto = articleService.fetchArticleById(id);
+        if(articleDto != null)
+            return new ResponseEntity<>(articleDto, HttpStatus.OK);
+        else {
+            return new ResponseEntity<>("Article Not Found", HttpStatus.BAD_REQUEST);
+        }
+    }
+
+
 }
